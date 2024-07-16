@@ -9,19 +9,18 @@ let filterList = [];
 let searchList = [];
 let charObj;
 
+// !=============================When Start==================================
+
 $(async () => {
- 
+  
   $("body").css("overflowY", "hidden");
 
-  $(".loading-outer").fadeOut(500, () => {
-    $("body").css("overflowY", "visible");
-  });
+ 
   $("#graph-page").fadeOut(0);
   let customers = await getCustomersData("customers");
-  
-  let transactions = await getCustomersData("transactions");
 
- 
+  let transactions = await getCustomersData("transactions");
+  $("label").animate({width:"35%"},800)
 
   customers.sort((a, b) => {
     return a.id - b.id;
@@ -32,7 +31,6 @@ $(async () => {
     let y = new Date(b.date).getTime();
     return y - x;
   });
-  
 
   transactions.forEach((transaction, index) => {
     customersList.push({
@@ -43,11 +41,9 @@ $(async () => {
     });
   });
   displayData(customersList);
-
-
-
- 
 });
+
+// *=============================Events==================================
 
 $("#fiter-name,#filter-amount").on("click", (e) => {
   let x;
@@ -99,10 +95,14 @@ $("#graph-page #my-btns button[id]").on("click", (e) => {
 $("#close").on("click", (e) => {
   $("#filter-amount").removeClass("sort-down sort-up");
   $("#fiter-name").removeClass("sort-down sort-up");
+  $("label input").val('');
   displayData(customersList);
   $("#table-page").fadeIn(500);
   $("#graph-page").fadeOut(50);
+
 });
+
+// ?=============================Functions==================================
 
 const getCustomersData = async (data = "customers") => {
   try {
@@ -114,8 +114,16 @@ const getCustomersData = async (data = "customers") => {
     console.log(customers);
     return customers;
   } catch (error) {
+   
     console.log(error);
-    myModal.show();  }
+    myModal.show();
+  }
+  finally{
+    $(".loading-outer").fadeOut(500, () => {
+      $("body").css("overflowY", "visible");
+    });
+  }
+
 };
 const filterData = (filter, state) => {
   let list = customersList;
@@ -148,26 +156,43 @@ const filterData = (filter, state) => {
   });
 
   console.log(filterList);
-  console.log(filterList[0][filter]);
-  displayData(filterList);
+  // console.log(filterList[0][filter]);
+  if (state !=0) {
+    displayData(filterList);
+  }
+  else{
+    displayData(searchList)
+  }
 };
 const search = (about) => {
   isSearch = true;
   let list = customersList;
-  if (filterByName || filterByAmount) {
-    list = filterList;
-  }
-  // $("#filter-amount").removeClass("sort-down sort-up");
-
-  // $("#fiter-name").removeClass("sort-down sort-up");
+ 
+ 
+  
   searchList = list.filter((customer, index) => {
     if (Number(about)) {
       return (customer.amount + "").startsWith("" + about);
     } else {
-      return customer.name.includes(about);
+      return customer.name.toLocaleLowerCase().includes(about.toLocaleLowerCase());
     }
   });
-  displayData(searchList);
+  
+  if (filterByName || filterByAmount) {
+    // list = filterList;
+    let fiter ;
+    let state;
+    if (filterByName) {
+      fiter="name";
+      state=filterByName;
+    }else{
+      fiter="amount";
+      state=filterByAmount;
+    }
+    filterData(fiter,state);
+  }else{
+    displayData(searchList);
+  }
 };
 
 const displayData = (list) => {

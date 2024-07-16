@@ -133,7 +133,7 @@ header h1{
     transition: 1s;
 }
 label:hover,label:focus-within{
-    width: 80%;
+    width: 80% !important;
     box-shadow: 0 0 2px 1px rgb(132, 118, 118);
     backdrop-filter: blur(30px);
 }
