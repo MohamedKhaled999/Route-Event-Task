@@ -161,7 +161,11 @@ const filterData = (filter, state) => {
     displayData(filterList);
   }
   else{
-    displayData(searchList)
+    if (isSearch) {
+      displayData(searchList)
+    }else{
+      displayData(customersList)
+    }
   }
 };
 const search = (about) => {
