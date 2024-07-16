@@ -3,10 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="keywords" content="Customers Transactions" />
+    <meta
+      name="description"
+      content="display all transactions of customers ,and display chart for daily customer transcations "
+    />
     <title>Transaction</title>
-    <meta name="keywords" content="Egyption party الحفلة " />
 
-    <link rel="shortcut icon" href="images/logo-sm.png" type="image/x-icon" />
+
+    <link rel="shortcut icon" href="images/money-exchange.png" type="image/x-icon" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -19,15 +24,57 @@
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/main.css" />
   </head>
-  <body class="">
+  <body class="position-relative">
+    <!-- *================================ Start Lodaer ================================= -->
+
+    <div
+      class="loading-outer position-fixed justify-content-center align-items-center bg-black min-vh-100 text-white"
+    >
+      <span class="loader"></span>
+    </div>
+
+    <div id="myModal" class="modal" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content p-4 modal-color">
+          <div class="modal-header border-0 p-0 pb-1">
+            <div class="circles d-flex gap-1">
+              <span class="rounded-circle"></span>
+              <span class="rounded-circle"></span>
+              <span class="rounded-circle"></span>
+            </div>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body p-0 pt-2">
+            <div class="text-center pb-2">
+              <i class="fa-solid fs-1 fa-circle-exclamation opacity-50"></i>
+            </div>
+            <p class="text-center">Sorry , Something is worng !</p>
+            <p id="errorMessage" class="fw-bolder text-center">
+              <ul>
+                <li>please check your connection !</li>
+                <li>this website needs local json server at port:3000 </li>
+              </ul>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- *================================ End Lodaer ================================= -->
+
     <main class="h-100">
       <div class="container h-100 mt-5">
+        <!-- !================================Start Table Section ================================= -->
         <section id="table-page" class="mx-lg-3">
           <div class="d-flex flex-column h-100">
             <header
               class="w-100 d-flex py-3 px-2 gap-3 align-items-center text-bg-light bg-opacity-50 justify-content-between position-relative"
             >
-              <h1 class="h3 m-0 p-0">Tansactions</h1> 
+              <h1 class="h3 m-0 p-0">Tansactions</h1>
               <label
                 for="filter"
                 class="d-flex justify-content-center align-items-center border border-1 border-opacity-50 border-dark p-1 rounded-pill position-absolute end-0 me-2"
@@ -37,7 +84,7 @@
                 </span>
 
                 <input
-                  class="form-control border-0 bg-transparent shadow-none "
+                  class="form-control border-0 bg-transparent shadow-none"
                   type="text"
                   name="filter"
                   id="filter"
@@ -52,170 +99,48 @@
                 <thead class="table-dark">
                   <tr>
                     <th>Id</th>
-                    <th class="">
-                      Name<span id="fiter-name">↑</span>
-                    </th>
+                    <th class="">Name<span id="fiter-name">↑</span></th>
                     <th>Date</th>
-                    <th>
-                      Amount<span id="filter-amount">↑ </span>
-                    </th>
+                    <th>Amount<span id="filter-amount">↑ </span></th>
                   </tr>
                 </thead>
                 <tbody class=" ">
-                  <tr>
-                    <td>1</td>
-                    <td>Ahmed Ali</td>
-                    <td>2022-01-01</td>
-                    <td>1000</td>
-                  </tr>
-                  <tr>
-                    <td>1</td>
-                    <td>Ahmed Ali</td>
-                    <td>"2022-01-01</td>
-                    <td>1000</td>
-                  </tr>
-                  <tr>
-                    <td>1</td>
-                    <td>Ahmed Ali</td>
-                    <td>"2022-01-01</td>
-                    <td>1000</td>
-                  </tr>
-                  <tr>
-                    <td>1</td>
-                    <td>Ahmed Ali</td>
-                    <td>"2022-01-01</td>
-                    <td>1000</td>
-                  </tr>
-                  <tr>
-                    <td>1</td>
-                    <td>Ahmed Ali</td>
-                    <td>"2022-01-01</td>
-                    <td>1000</td>
-                  </tr>
-                  <tr>
-                    <td>1</td>
-                    <td>Ahmed Ali</td>
-                    <td>"2022-01-01</td>
-                    <td>1000</td>
-                  </tr>
-                  <tr>
-                    <td>1</td>
-                    <td>Ahmed Ali</td>
-                    <td>"2022-01-01</td>
-                    <td>1000</td>
-                  </tr>
-                  <tr>
-                    <td>1</td>
-                    <td>Ahmed Ali</td>
-                    <td>"2022-01-01</td>
-                    <td>1000</td>
-                  </tr>
-                  <tr>
-                    <td>1</td>
-                    <td>Ahmed Ali</td>
-                    <td>"2022-01-01</td>
-                    <td>1000</td>
-                  </tr>
-                  <tr>
-                    <td>1</td>
-                    <td>Ahmed Ali</td>
-                    <td>"2022-01-01</td>
-                    <td>1000</td>
-                  </tr>
-                  <tr>
-                    <td>1</td>
-                    <td>Ahmed Ali</td>
-                    <td>"2022-01-01</td>
-                    <td>1000</td>
-                  </tr>
-                  <tr>
-                    <td>1</td>
-                    <td>Ahmed Ali</td>
-                    <td>"2022-01-01</td>
-                    <td>1000</td>
-                  </tr>
-                  <tr>
-                    <td>1</td>
-                    <td>Ahmed Ali</td>
-                    <td>"2022-01-01</td>
-                    <td>1000</td>
-                  </tr>
-                  <tr>
-                    <td>1</td>
-                    <td>Ahmed Ali</td>
-                    <td>"2022-01-01</td>
-                    <td>1000</td>
-                  </tr>
-                  <tr>
-                    <td>1</td>
-                    <td>Ahmed Ali</td>
-                    <td>"2022-01-01</td>
-                    <td>1000</td>
-                  </tr>
-                  <tr>
-                    <td>1</td>
-                    <td>Ahmed Ali</td>
-                    <td>"2022-01-01</td>
-                    <td>1000</td>
-                  </tr>
-                  <tr>
-                    <td>1</td>
-                    <td>Ahmed Ali</td>
-                    <td>"2022-01-01</td>
-                    <td>1000</td>
-                  </tr>
-
-                  <tr>
-                    <td>2</td>
-                    <td>Ahmed Ali</td>
-                    <td>"2022-01-01</td>
-                    <td>1000</td>
-                  </tr>
+                 
                 </tbody>
               </table>
             </div>
           </div>
         </section>
-        <section id="graph-page" class=" h-100 ">
-          <div class="chart bg-gradient bg-black bg-opacity-75  text-white d-flex flex-column justify-content-center align-items-center overflow-hidden rounded-5 gap-3 py-3 position-relative" >
-            <button id="close" type="button" class="text-white btn btn-outline-primary rounded-circle position-absolute top-0 end-0 mt-3 me-5">
+        <!-- !================================End Table Section ================================= -->
+
+        <!-- ?================================Start Chart Section ================================= -->
+
+        <section id="graph-page" class="h-100">
+          <div
+            class="chart bg-gradient bg-black bg-opacity-75 text-white d-flex flex-column justify-content-center align-items-center overflow-hidden rounded-5 gap-3 py-3 position-relative"
+          >
+            <button
+              id="close"
+              type="button"
+              class="text-white btn btn-outline-primary rounded-circle position-absolute top-0 end-0 mt-3 me-5"
+            >
               <i class="fa-solid fa-xmark"></i>
             </button>
             <div id="my-btns" class="text-center mt-5">
-              <button
-                class="btn btn-outline-primary"
-                id="bar"
-              >
-                Bars
-              </button>
-              <button
-                class="btn btn-outline-primary"
-                id="line"
-              >
-                Line
-              </button>
-              <button
-                class="btn btn-outline-primary"
-                id="doughnut"
-              >
+              <button class="btn btn-outline-primary" id="bar">Bars</button>
+              <button class="btn btn-outline-primary" id="line">Line</button>
+              <button class="btn btn-outline-primary" id="doughnut">
                 Doughnut
               </button>
-              <button
-                class="btn btn-outline-primary"
-                id="polarArea"
-              >
+              <button class="btn btn-outline-primary" id="polarArea">
                 PolarArea
               </button>
-              <button
-                class="btn btn-outline-primary"
-                id="radar"
-              >
-                Radar
-              </button>
+              <button class="btn btn-outline-primary" id="radar">Radar</button>
             </div>
             <canvas id="myChart" class="mx-lg-5 px-lg-4"></canvas>
           </div>
         </section>
+        <!-- ?================================End Chart Section ================================= -->
       </div>
     </main>
 

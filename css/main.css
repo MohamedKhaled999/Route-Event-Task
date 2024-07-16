@@ -1,8 +1,8 @@
+/* ?============================ Global ============================== */
+
 :root {
     scroll-behavior: auto;
 }
-
-
 ::-webkit-scrollbar {
     width: 5px;
    }
@@ -29,9 +29,11 @@ body {
     overflow-x: hidden;
     /* overflow-y: hidden; */
     background-image: url(../images/bg.jpg);
-    font-family: Nerko;
+    font-family: Nerko,system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI';
 
 }
+
+/* *============================ Table Section ============================== */
 
 
 #table-page {
@@ -61,7 +63,6 @@ table {
 
 
 }
-
 
 tbody{
     display: block;
@@ -137,6 +138,7 @@ label:hover,label:focus-within{
     backdrop-filter: blur(30px);
 }
 
+/* !============================Chart Section============================== */
 
 .chart {
     margin: 0 auto;
@@ -146,3 +148,96 @@ canvas {
     height: 500px !important;
    min-width: 50% ;
 }
+
+/* ?=======================Loader============================ */
+.loader {
+    color: #fff;
+    font-size: 15px;
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    position: relative;
+    text-indent: -9999em;
+    animation: mulShdSpin 1.3s infinite linear;
+    transform: translateZ(0);
+  }
+  
+  @keyframes mulShdSpin {
+    0%,
+    100% {
+      box-shadow: 0 -3em 0 0.2em, 
+      2em -2em 0 0em, 3em 0 0 -1em, 
+      2em 2em 0 -1em, 0 3em 0 -1em, 
+      -2em 2em 0 -1em, -3em 0 0 -1em, 
+      -2em -2em 0 0;
+    }
+    12.5% {
+      box-shadow: 0 -3em 0 0, 2em -2em 0 0.2em, 
+      3em 0 0 0, 2em 2em 0 -1em, 0 3em 0 -1em, 
+      -2em 2em 0 -1em, -3em 0 0 -1em, 
+      -2em -2em 0 -1em;
+    }
+    25% {
+      box-shadow: 0 -3em 0 -0.5em, 
+      2em -2em 0 0, 3em 0 0 0.2em, 
+      2em 2em 0 0, 0 3em 0 -1em, 
+      -2em 2em 0 -1em, -3em 0 0 -1em, 
+      -2em -2em 0 -1em;
+    }
+    37.5% {
+      box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em,
+       3em 0em 0 0, 2em 2em 0 0.2em, 0 3em 0 0em, 
+       -2em 2em 0 -1em, -3em 0em 0 -1em, -2em -2em 0 -1em;
+    }
+    50% {
+      box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em,
+       3em 0 0 -1em, 2em 2em 0 0em, 0 3em 0 0.2em, 
+       -2em 2em 0 0, -3em 0em 0 -1em, -2em -2em 0 -1em;
+    }
+    62.5% {
+      box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em,
+       3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 0, 
+       -2em 2em 0 0.2em, -3em 0 0 0, -2em -2em 0 -1em;
+    }
+    75% {
+      box-shadow: 0em -3em 0 -1em, 2em -2em 0 -1em, 
+      3em 0em 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, 
+      -2em 2em 0 0, -3em 0em 0 0.2em, -2em -2em 0 0;
+    }
+    87.5% {
+      box-shadow: 0em -3em 0 0, 2em -2em 0 -1em, 
+      3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, 
+      -2em 2em 0 0, -3em 0em 0 0, -2em -2em 0 0.2em;
+    }
+  }
+    
+
+.loading-outer {
+    z-index: 99999;
+    inset: 0;
+    display: flex;
+}
+
+
+/* *===========================modal====================================*/
+.circles span {
+    width: 20px;
+    height: 20px;
+    background-color: rgb(49, 49, 49);
+    border: #474848 1px solid;
+
+
+}
+
+.circles span:nth-child(1) {
+    background-color: rgb(0, 0, 0);
+
+
+}
+
+.circles span:nth-child(3) {
+    background-color:rgb(142, 140, 138);
+
+
+}
+

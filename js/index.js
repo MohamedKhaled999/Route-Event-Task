@@ -1,5 +1,6 @@
 /// <reference types="../@types/jquery"/>
 const ctx = document.getElementById("myChart");
+const myModal = new bootstrap.Modal(document.getElementById("myModal"));
 let filterByName = 0;
 let filterByAmount = 0;
 let isSearch = false;
@@ -9,11 +10,18 @@ let searchList = [];
 let charObj;
 
 $(async () => {
+ 
+  $("body").css("overflowY", "hidden");
+
+  $(".loading-outer").fadeOut(500, () => {
+    $("body").css("overflowY", "visible");
+  });
   $("#graph-page").fadeOut(0);
   let customers = await getCustomersData("customers");
+  
   let transactions = await getCustomersData("transactions");
 
-  console.log("before sort", [...transactions]);
+ 
 
   customers.sort((a, b) => {
     return a.id - b.id;
@@ -24,7 +32,7 @@ $(async () => {
     let y = new Date(b.date).getTime();
     return y - x;
   });
-  console.log("After sort", customers);
+  
 
   transactions.forEach((transaction, index) => {
     customersList.push({
@@ -35,6 +43,10 @@ $(async () => {
     });
   });
   displayData(customersList);
+
+
+
+ 
 });
 
 $("#fiter-name,#filter-amount").on("click", (e) => {
@@ -103,7 +115,7 @@ const getCustomersData = async (data = "customers") => {
     return customers;
   } catch (error) {
     console.log(error);
-  }
+    myModal.show();  }
 };
 const filterData = (filter, state) => {
   let list = customersList;
