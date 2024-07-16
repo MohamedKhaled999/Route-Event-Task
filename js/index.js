@@ -12,15 +12,13 @@ let charObj;
 // !=============================When Start==================================
 
 $(async () => {
-  
   $("body").css("overflowY", "hidden");
 
- 
   $("#graph-page").fadeOut(0);
   let customers = await getCustomersData("customers");
 
   let transactions = await getCustomersData("transactions");
-  $("label").animate({width:"35%"},800)
+  $("label").animate({ width: "35%" }, 800);
 
   customers.sort((a, b) => {
     return a.id - b.id;
@@ -95,11 +93,10 @@ $("#graph-page #my-btns button[id]").on("click", (e) => {
 $("#close").on("click", (e) => {
   $("#filter-amount").removeClass("sort-down sort-up");
   $("#fiter-name").removeClass("sort-down sort-up");
-  $("label input").val('');
+  $("label input").val("");
   displayData(customersList);
   $("#table-page").fadeIn(500);
   $("#graph-page").fadeOut(50);
-
 });
 
 // ?=============================Functions==================================
@@ -114,16 +111,13 @@ const getCustomersData = async (data = "customers") => {
     console.log(customers);
     return customers;
   } catch (error) {
-   
     console.log(error);
     myModal.show();
-  }
-  finally{
+  } finally {
     $(".loading-outer").fadeOut(500, () => {
       $("body").css("overflowY", "visible");
     });
   }
-
 };
 const filterData = (filter, state) => {
   let list = customersList;
@@ -157,44 +151,43 @@ const filterData = (filter, state) => {
 
   console.log(filterList);
   // console.log(filterList[0][filter]);
-  if (state !=0) {
+  if (state != 0) {
     displayData(filterList);
-  }
-  else{
+  } else {
     if (isSearch) {
-      displayData(searchList)
-    }else{
-      displayData(customersList)
+      displayData(searchList);
+    } else {
+      displayData(customersList);
     }
   }
 };
 const search = (about) => {
   isSearch = true;
   let list = customersList;
- 
- 
-  
+
   searchList = list.filter((customer, index) => {
     if (Number(about)) {
       return (customer.amount + "").startsWith("" + about);
     } else {
-      return customer.name.toLocaleLowerCase().includes(about.toLocaleLowerCase());
+      return customer.name
+        .toLocaleLowerCase()
+        .includes(about.toLocaleLowerCase());
     }
   });
-  
+
   if (filterByName || filterByAmount) {
     // list = filterList;
-    let fiter ;
+    let fiter;
     let state;
     if (filterByName) {
-      fiter="name";
-      state=filterByName;
-    }else{
-      fiter="amount";
-      state=filterByAmount;
+      fiter = "name";
+      state = filterByName;
+    } else {
+      fiter = "amount";
+      state = filterByAmount;
     }
-    filterData(fiter,state);
-  }else{
+    filterData(fiter, state);
+  } else {
     displayData(searchList);
   }
 };
