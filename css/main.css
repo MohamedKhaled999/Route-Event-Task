@@ -1,0 +1,148 @@
+:root {
+    scroll-behavior: auto;
+}
+
+
+::-webkit-scrollbar {
+    width: 5px;
+   }
+   
+  ::-webkit-scrollbar-track {
+    border: 7px solid #292c3b;
+    box-shadow: inset 0 0 2.5px 2px rgba(0, 0, 0, 0.5);
+    border-radius: 4px;
+    background-color: #d4d4d8;
+    }
+   
+  ::-webkit-scrollbar-thumb {
+    background: #999;
+    border-radius: 2px;
+  }
+   
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+   
+
+body {
+    height: 100vh;
+    overflow-x: hidden;
+    /* overflow-y: hidden; */
+    background-image: url(../images/bg.jpg);
+    font-family: Nerko;
+
+}
+
+
+#table-page {
+    backdrop-filter: blur(8px);
+    background-color: rgba(200, 175, 175, 0.333);
+    border-radius: 14px;
+    height: 650px;
+    overflow:hidden ;
+    
+
+}
+
+header {
+    background-color: #6c5bbf78;
+    height: 80px;
+}
+
+.table-container {
+    max-height:570;
+
+}
+
+table {
+
+    height: 520px;
+    /* text-align:a; */
+
+
+}
+
+
+tbody{
+    display: block;
+    table-layout: fixed;
+    
+    height: 99%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+ tr {
+    display: table;
+    width: 100%;
+    text-align: end;
+    transition:transform 0.5s ;
+}
+tr>*{
+    text-align: center;
+    width: 25%;
+    font-size: 18px;
+    font-weight: 600;
+}
+tbody tr:hover{
+    box-shadow: 0 0 5px rgb(245, 243, 243) inset ;
+    background-color: #ebe6e675;
+    transform: translateX(10px);
+    
+}
+th{
+    white-space: nowrap;
+}
+th span{
+    display: inline-block;
+    width: 27px;
+    height: 27px;
+    border-radius: 50%;
+    
+   
+}
+th,th span{
+    transition: 0.5s;
+}
+th:hover{
+    color: #6A5CCB;   
+}
+th:hover span{
+    outline: 1px solid white; 
+}
+
+.sort-down{
+    background-color: #6A5CCB;
+    color: white;
+    rotate: 180deg;
+
+}
+.sort-up{
+    background-color: #6A5CCB;
+    color: white;
+    rotate: 360deg;
+
+}
+
+label{
+    width: 30%;
+    background-color: rgba(255, 255, 255, 0.722);
+    transition: 1.5s ease-in-out ;
+}
+header h1{
+    transition: 1s;
+}
+label:hover,label:focus-within{
+    width: 80%;
+    box-shadow: 0 0 2px 1px rgb(132, 118, 118);
+    backdrop-filter: blur(30px);
+}
+
+
+.chart {
+    margin: 0 auto;
+}
+
+canvas {
+    height: 500px !important;
+   min-width: 50% ;
+}
